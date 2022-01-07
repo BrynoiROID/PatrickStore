@@ -4,7 +4,6 @@
 //
 //  Created by Admin on 24/08/21.
 //
-
 import UIKit
 
 import GoogleMaps
@@ -15,7 +14,13 @@ import GooglePlaces
 
 import MapKit
 
-class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate{
+//MARK: - SetLocation Button Tap Delegate
+protocol SetLocationButtonTapDelegate {
+    func locationSelection(location:String,lat:String,long:String)
+}
+
+class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate, GMSAutocompleteViewControllerDelegate{
+    
     
     //MARK: - IB Outlets
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,6 +28,14 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: GMSMapView!
     
     @IBOutlet weak var lblPlaceName: UILabel!
+    
+    enum LocationSelect{
+        case Home
+        case Address
+        case FetchlLocation
+    }
+    
+    var locationDelelgate : SetLocationButtonTapDelegate!
     
     var locationname = String()
     
@@ -48,6 +61,8 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     
     var gPlace : GMSPlace?
     
+    var locationSelect = LocationSelect.Home
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
@@ -59,10 +74,12 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         // Set status bar color
         Helper.StatusBarColor(view: self.view)
         
+        // Setting up of Map
         self.setupMap()
         
         // Search Bar Settings
         if #available(iOS 13.0, *) {
+            self.searchBar.delegate = self
             self.searchBar.updateHeight(height: 50.0)
             self.searchBar.searchBarStyle = .minimal
             self.searchBar.searchTextField.backgroundColor = .white
@@ -77,13 +94,31 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    //MARK: - GooglePlace Map Select Time Logic
+    // MARK: - UISearch Bar Delegate Function
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.autocompleteClicked()
+    }
     
+    // MARK: - Google Places Autocomplete
+    func autocompleteClicked() {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+                                                    UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
+        autocompleteController.placeFields = fields
+        // Specify a filter.
+        let filter = GMSAutocompleteFilter()
+        filter.countries = ["in"]
+        filter.type = .city
+        autocompleteController.autocompleteFilter = filter
+        // Display the autocomplete view controller.
+        autocompleteController.modalPresentationStyle = .fullScreen
+        present(autocompleteController, animated: true, completion: nil)
+    }
     
     //MARK: - Current Location Update Delegate
-    
-    func setupMap()
-    {
+    func setupMap(){
         mapView.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest // Battery
         manager.delegate = self
@@ -95,7 +130,6 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         if let location = locations.first{
             manager.stopUpdatingLocation()
             let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 0.0)
-            mapView.mapType = GMSMapViewType.satellite
             mapView.camera = camera
             mapView.animate(to: camera)
             mapView.animate(toZoom: 14.0)
@@ -112,7 +146,7 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
             CATransaction.setAnimationDuration(2.0)
             userLocationMarker.position = location.coordinate // CLLocationCoordinate2D coordinate
             CATransaction.commit()
-           // render(location)
+            render(location)
             
         }
     }
@@ -127,6 +161,7 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
                 if let place = placemark?[0]{
                     
                     if placemark!.count > 0 {
+                        
                         if let locationName = place.name {
                             self.locationname = String(locationName)
                         }
@@ -180,11 +215,35 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     
     //MARK: - Button Actions
     
-    //Set Location Button Action
+    //MARK: - Set Location Button Action
     @IBAction func setLocationButtonTapped(_ sender: UIButton) {
-        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-        let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-        self.navigationController?.pushViewController(controller, animated: true)
+        switch locationSelect {
+        case .Home:
+            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+            let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.navigationController?.pushViewController(controller, animated: true)
+        case .Address:
+            self.locationDelelgate.locationSelection(location: self.subThorough + " " + self.city + "," + " " + self.locationname + "," + " " + self.zip + "," + " " + self.country, lat: latitude, long: longitude)
+            self.navigationController?.popViewController(animated: true)
+        case .FetchlLocation:
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+//MARK: - GMSLocation Setup
+extension SetLocationVC{
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        lblPlaceName.text = place.name
+        dismiss(animated: true, completion: nil)
+    }
+    // Handle the error.
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
     }
     
+    // User canceled the operation.
+     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+       dismiss(animated: true, completion: nil)
+     }
 }

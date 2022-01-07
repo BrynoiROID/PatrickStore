@@ -7,14 +7,6 @@
 
 import UIKit
 
-//MARK: - Current Button Tap Delegate
-protocol currentButtonTapDelegate {
-    
-    func editButtonSelection(indexValue: Int)
-    
-    func deleteButtonSelection(indexValue: Int)
-}
-
 class tblMyAddressesCell: UITableViewCell {
 
     //MARK: - IB Outlets
@@ -30,8 +22,10 @@ class tblMyAddressesCell: UITableViewCell {
     
     @IBOutlet weak var bttnDelete: UIButton!
     
+    @IBOutlet weak var lblHomeType: UILabel!
+    
     //MARK: - Variables and Constants
-    var buttonSelectionDelegate : currentButtonTapDelegate!
+    var itemDetails : Items?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,17 +36,17 @@ class tblMyAddressesCell: UITableViewCell {
     func initialSetup() {
         // Set Bottom Shadow for view
         Helper.shadowSetViewBottom(view: self.viewBG)
-    }
-    
-    //MARK: - Button Actions
-    
-    // Edit Button Action
-    @IBAction func editButtonTapped(_ sender: UIButton) {
-        self.buttonSelectionDelegate.editButtonSelection(indexValue: sender.tag)
-    }
-    
-    // Delete Button Action
-    @IBAction func deleteButtonTapped(_ sender: UIButton) {
-        self.buttonSelectionDelegate.deleteButtonSelection(indexValue: sender.tag)
+        
+        // Set Corner Radius for label
+        Helper.cornerSetView(view: lblHomeType, radiousValue: 10)
+       
+        
+        //Listing Address Details
+        if itemDetails != nil {
+            self.lblName.text = itemDetails?.name
+            self.lblAddress.text = "\(itemDetails!.address1 ?? "") , \(itemDetails!.landMark ?? "")"
+            self.lblContactNo.text = itemDetails?.contactNumber
+            self.lblHomeType.text = itemDetails?.label
+        }
     }
 }

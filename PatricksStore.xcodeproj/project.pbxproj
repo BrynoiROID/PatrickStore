@@ -174,6 +174,10 @@
 		A6473812277C21D300C2B0D3 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6473811277C21D300C2B0D3 /* HomeModel.swift */; };
 		A65719FA2782BD7500EC634A /* TittleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65719F82782BD7500EC634A /* TittleTableCell.swift */; };
 		A65719FB2782BD7500EC634A /* TittleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65719F92782BD7500EC634A /* TittleTableCell.xib */; };
+		FAE2378227886A780037C674 /* AddAddressViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2378127886A780037C674 /* AddAddressViewMode.swift */; };
+		FAE2378527886A9D0037C674 /* MyAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2378427886A9D0037C674 /* MyAddressViewModel.swift */; };
+		FAE2378B27886ADF0037C674 /* AddAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2378A27886ADF0037C674 /* AddAddressModel.swift */; };
+		FAE2378E27886AFB0037C674 /* MyAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2378D27886AFB0037C674 /* MyAddressModel.swift */; };
 		FAFB10302771E305007A534C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB102F2771E305007A534C /* RegisterViewModel.swift */; };
 		FAFB10332771EBCA007A534C /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB10322771EBCA007A534C /* WebServices.swift */; };
 		FAFB10412771F1D9007A534C /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB10402771F1D9007A534C /* RegisterModel.swift */; };
@@ -353,6 +357,10 @@
 		A65719F92782BD7500EC634A /* TittleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TittleTableCell.xib; sourceTree = "<group>"; };
 		A794EF3E1D39FC9962D01C4D /* Pods_PatricksStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PatricksStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39120BC7DD3883C8E2A4911 /* Pods-PatricksStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatricksStore.release.xcconfig"; path = "Target Support Files/Pods-PatricksStore/Pods-PatricksStore.release.xcconfig"; sourceTree = "<group>"; };
+		FAE2378127886A780037C674 /* AddAddressViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewMode.swift; sourceTree = "<group>"; };
+		FAE2378427886A9D0037C674 /* MyAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewModel.swift; sourceTree = "<group>"; };
+		FAE2378A27886ADF0037C674 /* AddAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressModel.swift; sourceTree = "<group>"; };
+		FAE2378D27886AFB0037C674 /* MyAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressModel.swift; sourceTree = "<group>"; };
 		FAFB102F2771E305007A534C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		FAFB10322771EBCA007A534C /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 		FAFB10402771F1D9007A534C /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
@@ -688,6 +696,8 @@
 		842F68BF270322B000306D01 /* My Addresses */ = {
 			isa = PBXGroup;
 			children = (
+				FAE2378727886AAD0037C674 /* Model */,
+				FAE2377B27886A230037C674 /* ViewModel */,
 				842F68C8270322B000306D01 /* View */,
 				842F68C0270322B000306D01 /* Controller */,
 				842F68C5270322B000306D01 /* Cell */,
@@ -1530,6 +1540,56 @@
 			path = HomeModel;
 			sourceTree = "<group>";
 		};
+		FAE2377B27886A230037C674 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2377E27886A4D0037C674 /* AddAddress */,
+				FAE2377D27886A460037C674 /* MyAddress */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FAE2377D27886A460037C674 /* MyAddress */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2378427886A9D0037C674 /* MyAddressViewModel.swift */,
+			);
+			path = MyAddress;
+			sourceTree = "<group>";
+		};
+		FAE2377E27886A4D0037C674 /* AddAddress */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2378127886A780037C674 /* AddAddressViewMode.swift */,
+			);
+			path = AddAddress;
+			sourceTree = "<group>";
+		};
+		FAE2378727886AAD0037C674 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2378927886AC20037C674 /* AddAddress */,
+				FAE2378827886ABA0037C674 /* MyAddress */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAE2378827886ABA0037C674 /* MyAddress */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2378D27886AFB0037C674 /* MyAddressModel.swift */,
+			);
+			path = MyAddress;
+			sourceTree = "<group>";
+		};
+		FAE2378927886AC20037C674 /* AddAddress */ = {
+			isa = PBXGroup;
+			children = (
+				FAE2378A27886ADF0037C674 /* AddAddressModel.swift */,
+			);
+			path = AddAddress;
+			sourceTree = "<group>";
+		};
 		FAFB10352771EBD9007A534C /* WebServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,6 +1813,7 @@
 				848F253B26EB6E120028FFC6 /* StoreItemTableViewCell.swift in Sources */,
 				841D302226CBDF7700797F7D /* LoginModel.swift in Sources */,
 				8400104A26EF941300988E82 /* SixImageColViewCell.swift in Sources */,
+				FAE2378227886A780037C674 /* AddAddressViewMode.swift in Sources */,
 				8400104426EF941300988E82 /* AllCategoriesVC.swift in Sources */,
 				84F0066126FB0008002FFD68 /* ShippingAddressTableViewCell.swift in Sources */,
 				8436668F26F9BEAA005E158D /* ReferralCodeTableViewCell.swift in Sources */,
@@ -1777,6 +1838,7 @@
 				8400104C26EF941300988E82 /* SingleImageTblCell.swift in Sources */,
 				8400104326EF941300988E82 /* FestivalOffersVC.swift in Sources */,
 				842F68BD2703229100306D01 /* tblMyOrderCell.swift in Sources */,
+				FAE2378527886A9D0037C674 /* MyAddressViewModel.swift in Sources */,
 				847DDFCA2705EC8F00E6ADD4 /* ShopsVC.swift in Sources */,
 				847DDFD12705EC8F00E6ADD4 /* tblShopDetailsProductSearchCell.swift in Sources */,
 				84F0067926FB5E88002FFD68 /* WalletVC.swift in Sources */,
@@ -1785,6 +1847,7 @@
 				847DDFCC2705EC8F00E6ADD4 /* clvCategoryCell.swift in Sources */,
 				84F0699826F847C200C715F3 /* BusinessStoresVC.swift in Sources */,
 				8436669326F9EACB005E158D /* GiftCertificateTableViewCell.swift in Sources */,
+				FAE2378B27886ADF0037C674 /* AddAddressModel.swift in Sources */,
 				A6010C40277DBEF800903EC3 /* sliderWithTittleTableCell.swift in Sources */,
 				A6010C2D277D8FA400903EC3 /* HomeVC.swift in Sources */,
 				84406D1C26CD19B3009273BC /* RecoverPasswordVC.swift in Sources */,
@@ -1835,6 +1898,7 @@
 				847DDFCB2705EC8F00E6ADD4 /* tblShopsCell.swift in Sources */,
 				847DDFCD2705EC8F00E6ADD4 /* tblShopDetailsProductCells.swift in Sources */,
 				842F68B02702F75300306D01 /* SideMenuCategoryItemTableViewCell.swift in Sources */,
+				FAE2378E27886AFB0037C674 /* MyAddressModel.swift in Sources */,
 				FAFB107827720988007A534C /* OtpModel.swift in Sources */,
 				84EC91982721867A00175874 /* clvItemTagsCell.swift in Sources */,
 				84A2285926F2265C0060EA83 /* DealsofDayHeaderTblCell.swift in Sources */,

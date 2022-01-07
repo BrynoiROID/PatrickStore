@@ -12,7 +12,7 @@ target 'PatricksStore' do
   pod 'GoogleMaps'
   pod 'ImageSlideshow', '1.9.2'
   pod "ImageSlideshow/Kingfisher"
-  pod 'Kingfisher'
+  pod 'Kingfisher','~> 6.3.1'
   pod 'Cosmos', '23.0.0'
   pod 'SideMenu', '6.5.0'
   pod 'Alamofire', '~> 5.1'
