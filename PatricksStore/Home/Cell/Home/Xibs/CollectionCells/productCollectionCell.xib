@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Barlow-SemiBold.ttf">
+            <string>Barlow-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCollectionCell" id="gTV-IL-0wX" customClass="productCollectionCell" customModule="PatricksStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="272" height="307"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="272" height="307"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Become Seller" translatesAutoresizingMaskIntoConstraints="NO" id="7sX-nF-VJe">
+                        <rect key="frame" x="10" y="10" width="252" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="bcr-Kh-JFS"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label sasdsasa asddaadas assadasda" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIR-2h-uZe">
+                        <rect key="frame" x="10" y="170" width="252" height="19"/>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wK7-5d-SOQ" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="10" y="199" width="100" height="25"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="H7l-Bj-aav"/>
+                            <constraint firstAttribute="height" constant="25" id="pHg-5D-Ts8"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹47.7376" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHR-J3-H8x">
+                        <rect key="frame" x="10" y="229" width="50" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="MtT-Lz-yUY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹47.7376" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOT-Ii-QtU">
+                        <rect key="frame" x="80" y="230" width="50" height="16"/>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="13"/>
+                        <color key="textColor" name="UnSelectColour"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAH-Xq-KFR">
+                        <rect key="frame" x="10" y="257" width="100" height="35"/>
+                        <color key="backgroundColor" name="AppPrimaryColour"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="FPt-VY-36r"/>
+                            <constraint firstAttribute="height" constant="35" id="khx-N1-8x0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="14"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Add to Cart">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="bAH-Xq-KFR" firstAttribute="leading" secondItem="7sX-nF-VJe" secondAttribute="leading" id="AlL-4I-O4o"/>
+                <constraint firstItem="OHR-J3-H8x" firstAttribute="top" secondItem="wK7-5d-SOQ" secondAttribute="bottom" constant="5" id="BZJ-Zl-cLM"/>
+                <constraint firstItem="GIR-2h-uZe" firstAttribute="top" secondItem="7sX-nF-VJe" secondAttribute="bottom" constant="10" id="CKm-aI-tBr"/>
+                <constraint firstAttribute="trailing" secondItem="7sX-nF-VJe" secondAttribute="trailing" constant="10" id="I7C-XA-Jjl"/>
+                <constraint firstItem="bAH-Xq-KFR" firstAttribute="top" secondItem="OHR-J3-H8x" secondAttribute="bottom" constant="10" id="Lgz-sH-AON"/>
+                <constraint firstItem="OHR-J3-H8x" firstAttribute="leading" secondItem="7sX-nF-VJe" secondAttribute="leading" id="Mz5-8f-DYk"/>
+                <constraint firstItem="GIR-2h-uZe" firstAttribute="leading" secondItem="7sX-nF-VJe" secondAttribute="leading" id="R85-Jf-dvM"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="bAH-Xq-KFR" secondAttribute="bottom" constant="15" id="cNb-j7-u8t"/>
+                <constraint firstItem="wK7-5d-SOQ" firstAttribute="leading" secondItem="7sX-nF-VJe" secondAttribute="leading" id="g9c-Ob-gQA"/>
+                <constraint firstItem="7sX-nF-VJe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="hmh-4Q-BCp"/>
+                <constraint firstItem="GIR-2h-uZe" firstAttribute="trailing" secondItem="7sX-nF-VJe" secondAttribute="trailing" id="iNr-4g-zS4"/>
+                <constraint firstItem="wK7-5d-SOQ" firstAttribute="top" secondItem="GIR-2h-uZe" secondAttribute="bottom" constant="10" id="iVi-2G-vxD"/>
+                <constraint firstItem="dOT-Ii-QtU" firstAttribute="centerY" secondItem="OHR-J3-H8x" secondAttribute="centerY" id="ieT-3t-VOg"/>
+                <constraint firstItem="dOT-Ii-QtU" firstAttribute="leading" secondItem="OHR-J3-H8x" secondAttribute="trailing" constant="20" id="jJw-aK-EmX"/>
+                <constraint firstItem="7sX-nF-VJe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="zBF-nq-Q6P"/>
+            </constraints>
+            <size key="customSize" width="272" height="307"/>
+            <connections>
+                <outlet property="productActualRateLabel" destination="OHR-J3-H8x" id="PZq-1g-PJ1"/>
+                <outlet property="productAddToCartButton" destination="bAH-Xq-KFR" id="Oqc-b8-X9j"/>
+                <outlet property="productImageView" destination="7sX-nF-VJe" id="YbC-kH-gKI"/>
+                <outlet property="productNameLabel" destination="GIR-2h-uZe" id="7XB-vY-FLR"/>
+                <outlet property="productOldRateLabel" destination="dOT-Ii-QtU" id="ghz-7W-MSz"/>
+                <outlet property="ratingView" destination="wK7-5d-SOQ" id="hU7-s2-QQe"/>
+            </connections>
+            <point key="canvasLocation" x="292.75362318840581" y="171.09375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Become Seller" width="360" height="188"/>
+        <namedColor name="AppPrimaryColour">
+            <color red="0.86699998378753662" green="0.67100000381469727" blue="0.22699999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="UnSelectColour">
+            <color red="0.48199999332427979" green="0.48600000143051147" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Barlow-Regular.ttf">
+            <string>Barlow-Regular</string>
+        </array>
+        <array key="Barlow-SemiBold.ttf">
+            <string>Barlow-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryProductCollectionCell" id="gTV-IL-0wX" customClass="categoryProductCollectionCell" customModule="PatricksStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="244" height="235"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="244" height="235"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deX-UI-uFU">
+                        <rect key="frame" x="10" y="10" width="90" height="90"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Big Deals" translatesAutoresizingMaskIntoConstraints="NO" id="3y3-nj-Bav">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="BsA-0H-U7I"/>
+                            <constraint firstItem="3y3-nj-Bav" firstAttribute="height" secondItem="deX-UI-uFU" secondAttribute="height" id="IMH-Cx-f3z"/>
+                            <constraint firstItem="3y3-nj-Bav" firstAttribute="centerY" secondItem="deX-UI-uFU" secondAttribute="centerY" id="frH-pp-UR1"/>
+                            <constraint firstItem="3y3-nj-Bav" firstAttribute="width" secondItem="deX-UI-uFU" secondAttribute="width" id="gdU-zD-77L"/>
+                            <constraint firstItem="3y3-nj-Bav" firstAttribute="centerX" secondItem="deX-UI-uFU" secondAttribute="centerX" id="u5o-Dm-IE8"/>
+                            <constraint firstAttribute="height" constant="90" id="wL2-Vc-oug"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label sasdsasa asddaadas assadasda" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-Kw-QbU">
+                        <rect key="frame" x="10" y="110" width="224" height="46"/>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opposite Priyanka Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-SS-g6B">
+                        <rect key="frame" x="10" y="166" width="224" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="Aet-VN-sLw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Barlow-Regular" family="Barlow" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="105" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JG5-MQ-gNx">
+                        <rect key="frame" x="10" y="198" width="40" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Q8W-sO-Nel"/>
+                            <constraint firstAttribute="height" constant="22" id="xeY-LR-mnd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Barlow-SemiBold" family="Barlow" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgi-HT-02H">
+                        <rect key="frame" x="50" y="198" width="184" height="22"/>
+                        <fontDescription key="fontDescription" name="Barlow-Regular" family="Barlow" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="tgi-HT-02H" firstAttribute="trailing" secondItem="jwP-Kw-QbU" secondAttribute="trailing" id="4pN-Fg-5tZ"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="JG5-MQ-gNx" secondAttribute="bottom" constant="15" id="9UR-rA-4fQ"/>
+                <constraint firstItem="jwP-Kw-QbU" firstAttribute="leading" secondItem="deX-UI-uFU" secondAttribute="leading" id="E9x-7L-jNG"/>
+                <constraint firstItem="C4R-SS-g6B" firstAttribute="leading" secondItem="deX-UI-uFU" secondAttribute="leading" id="GY9-q4-srX"/>
+                <constraint firstItem="C4R-SS-g6B" firstAttribute="trailing" secondItem="jwP-Kw-QbU" secondAttribute="trailing" id="T1o-Wu-O1t"/>
+                <constraint firstItem="jwP-Kw-QbU" firstAttribute="top" secondItem="deX-UI-uFU" secondAttribute="bottom" constant="10" id="VyP-wZ-Z6i"/>
+                <constraint firstItem="JG5-MQ-gNx" firstAttribute="top" secondItem="C4R-SS-g6B" secondAttribute="bottom" constant="10" id="WPB-yM-ES8"/>
+                <constraint firstItem="deX-UI-uFU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ZJp-1H-yuM"/>
+                <constraint firstItem="tgi-HT-02H" firstAttribute="leading" secondItem="JG5-MQ-gNx" secondAttribute="trailing" id="aOS-eJ-Ir1"/>
+                <constraint firstItem="deX-UI-uFU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="d7F-7E-qhq"/>
+                <constraint firstItem="tgi-HT-02H" firstAttribute="centerY" secondItem="JG5-MQ-gNx" secondAttribute="centerY" id="ehV-rb-Smd"/>
+                <constraint firstItem="JG5-MQ-gNx" firstAttribute="leading" secondItem="deX-UI-uFU" secondAttribute="leading" id="fq3-9U-4ZE"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="jwP-Kw-QbU" secondAttribute="trailing" constant="10" id="hXZ-RB-SBP"/>
+                <constraint firstItem="C4R-SS-g6B" firstAttribute="top" secondItem="jwP-Kw-QbU" secondAttribute="bottom" constant="10" id="yct-5f-5gg"/>
+            </constraints>
+            <size key="customSize" width="244" height="238"/>
+            <connections>
+                <outlet property="productImageView" destination="3y3-nj-Bav" id="4dG-UR-zxe"/>
+                <outlet property="productLocationLabel" destination="C4R-SS-g6B" id="gku-O7-3uP"/>
+                <outlet property="productNameLabel" destination="jwP-Kw-QbU" id="xEK-pN-6Te"/>
+                <outlet property="productPicView" destination="deX-UI-uFU" id="hoW-nP-L6u"/>
+                <outlet property="productQtyLabel" destination="JG5-MQ-gNx" id="7IN-gw-fqA"/>
+            </connections>
+            <point key="canvasLocation" x="272.46376811594206" y="147.99107142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Big Deals" width="168" height="182"/>
+    </resources>
+</document>
