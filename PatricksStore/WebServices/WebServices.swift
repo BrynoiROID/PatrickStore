@@ -155,7 +155,83 @@ class WebServices{
                 }
             }
         }
-    //MARK:- Listing Address API
+    //MARK: - Service Category API Call
+        func serviceCategoryApi(strUrl:String,header: HTTPHeaders,completion: @escaping (Result<ServiceCategoryModel,Error>) -> ()) {
+            LoadingIndicatorView.show()
+            let encoded = strUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+            let url = URL(string: encoded!)
+            AF.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: header).responseDecodable(of: ServiceCategoryModel.self) { response in
+                LoadingIndicatorView.hide()
+                if response.response?.statusCode == 200 {
+                    guard let data = response.data else {return}
+                        do {
+                            let modeldata = try JSONDecoder().decode(ServiceCategoryModel.self, from: data)
+                                completion(.success(modeldata))
+                        } catch let err {
+                            completion(.failure(err))
+                        }
+                }else{
+                    if response.response?.statusCode == 404{
+                        Helper.showAlert(message: "Page Not Found!")
+                        
+                    }else if response.response?.statusCode == 401{
+                        Helper.showAlert(message: "Unauthorized")
+                        
+                    }else if response.response?.statusCode == 400{
+                        Helper.showAlert(message: "Unauthorized")
+                        
+                    }else if response.response?.statusCode == 500{
+                        Helper.showAlert(message: "Internal Server Error")
+                        
+                    }else if response.response?.statusCode == 503{
+                        Helper.showAlert(message: "Service Unavailable")
+                        
+                    }else{
+                        Helper.showAlert(message: "Somthing Went Wrong!")
+                        
+                    }
+                }
+            }
+    }
+    //MARK: - Product Category API Call
+        func productCategoryApi(strUrl:String,header: HTTPHeaders,completion: @escaping (Result<ProductCategoryModel,Error>) -> ()) {
+            LoadingIndicatorView.show()
+            let encoded = strUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+            let url = URL(string: encoded!)
+            AF.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: header).responseDecodable(of: ProductCategoryModel.self) { response in
+                LoadingIndicatorView.hide()
+                if response.response?.statusCode == 200 {
+                    guard let data = response.data else {return}
+                        do {
+                            let modeldata = try JSONDecoder().decode(ProductCategoryModel.self, from: data)
+                                completion(.success(modeldata))
+                        } catch let err {
+                            completion(.failure(err))
+                        }
+                }else{
+                    if response.response?.statusCode == 404{
+                        Helper.showAlert(message: "Page Not Found!")
+                        
+                    }else if response.response?.statusCode == 401{
+                        Helper.showAlert(message: "Unauthorized")
+                        
+                    }else if response.response?.statusCode == 400{
+                        Helper.showAlert(message: "Unauthorized")
+                        
+                    }else if response.response?.statusCode == 500{
+                        Helper.showAlert(message: "Internal Server Error")
+                        
+                    }else if response.response?.statusCode == 503{
+                        Helper.showAlert(message: "Service Unavailable")
+                        
+                    }else{
+                        Helper.showAlert(message: "Somthing Went Wrong!")
+                        
+                    }
+                }
+            }
+    }
+    //MARK: - Listing Address API
     func listAddressApi(url:String,completion: @escaping (Result<MyAddressModel,Error>) -> ()) {
         let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
         LoadingIndicatorView.show()
@@ -193,7 +269,7 @@ class WebServices{
             }
         }
     }
-    //MARK:- Edit Address API Call
+    //MARK: - Edit Address API Call
     func editAddressApi(url:String,completion: @escaping (Result<AddAddressModel,Error>) -> ()) {
         let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
         LoadingIndicatorView.show()
@@ -231,8 +307,8 @@ class WebServices{
         }
     }
     
-    //MARK:- PATCH API's
-    //MARK:- Update Address API Call
+    //MARK: - PATCH API's
+    //MARK: - Update Address API Call
     func updateAddressApi(url:String,parameter:Parameters,completion: @escaping (Result<AddAddressModel,Error>) -> ()) {
         let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
         LoadingIndicatorView.show()
@@ -269,8 +345,8 @@ class WebServices{
             }
         }
     }
-    //MARK:- DELETE API's
-    //MARK:- Delete Address API Call
+    //MARK: - DELETE API's
+    //MARK: - Delete Address API Call
     func deleteAddressApi(url:String,completion: @escaping (Result<AddAddressModel,Error>) -> ()) {
         let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
         LoadingIndicatorView.show()

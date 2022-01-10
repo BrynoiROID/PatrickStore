@@ -172,6 +172,7 @@
 		A63237432782FDAB0062E1F7 /* categoryProductCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63237412782FDAB0062E1F7 /* categoryProductCollectionCell.xib */; };
 		A647380E277C219300C2B0D3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647380D277C219300C2B0D3 /* HomeViewModel.swift */; };
 		A6473812277C21D300C2B0D3 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6473811277C21D300C2B0D3 /* HomeModel.swift */; };
+		A64DD069278C17E100F15868 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DD068278C17E100F15868 /* SideMenuModel.swift */; };
 		A65719FA2782BD7500EC634A /* TittleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65719F82782BD7500EC634A /* TittleTableCell.swift */; };
 		A65719FB2782BD7500EC634A /* TittleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65719F92782BD7500EC634A /* TittleTableCell.xib */; };
 		FAE2378227886A780037C674 /* AddAddressViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2378127886A780037C674 /* AddAddressViewMode.swift */; };
@@ -353,6 +354,7 @@
 		A63237412782FDAB0062E1F7 /* categoryProductCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = categoryProductCollectionCell.xib; sourceTree = "<group>"; };
 		A647380D277C219300C2B0D3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A6473811277C21D300C2B0D3 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		A64DD068278C17E100F15868 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		A65719F82782BD7500EC634A /* TittleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TittleTableCell.swift; sourceTree = "<group>"; };
 		A65719F92782BD7500EC634A /* TittleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TittleTableCell.xib; sourceTree = "<group>"; };
 		A794EF3E1D39FC9962D01C4D /* Pods_PatricksStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PatricksStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1527,6 +1529,7 @@
 		A647380F277C21BB00C2B0D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A64DD067278C17C800F15868 /* SideMenuModel */,
 				A6473810277C21C500C2B0D3 /* HomeModel */,
 			);
 			path = Model;
@@ -1538,6 +1541,14 @@
 				A6473811277C21D300C2B0D3 /* HomeModel.swift */,
 			);
 			path = HomeModel;
+			sourceTree = "<group>";
+		};
+		A64DD067278C17C800F15868 /* SideMenuModel */ = {
+			isa = PBXGroup;
+			children = (
+				A64DD068278C17E100F15868 /* SideMenuModel.swift */,
+			);
+			path = SideMenuModel;
 			sourceTree = "<group>";
 		};
 		FAE2377B27886A230037C674 /* ViewModel */ = {
@@ -1880,6 +1891,7 @@
 				844C29C526F36F0D00B870CC /* OrderSummaryVC.swift in Sources */,
 				841C38D526E63DC1009A3363 /* MenuTableViewCell.swift in Sources */,
 				842F68CA270322B100306D01 /* AddAddressVC.swift in Sources */,
+				A64DD069278C17E100F15868 /* SideMenuModel.swift in Sources */,
 				8461C1F6271836CF009B4C7D /* ItemDetail.swift in Sources */,
 				FAFB10302771E305007A534C /* RegisterViewModel.swift in Sources */,
 				FAFB1075277206A2007A534C /* OtpViewModel.swift in Sources */,

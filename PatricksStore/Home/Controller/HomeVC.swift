@@ -28,6 +28,10 @@ class HomeVC: UIViewController {
     
     var homeModel : HomeModel?
     
+    var serviceCategoryModel = [ServiceCategoryData]()
+    
+    var productCategoryModel = [ProductCategoryData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -63,7 +67,7 @@ class HomeVC: UIViewController {
         self.homeTableView.register(UINib(nibName: "bannerTableCell", bundle: nil), forCellReuseIdentifier: "bannerTableCell")
         self.homeTableView.register(UINib(nibName: "TittleTableCell", bundle: nil), forCellReuseIdentifier: "TittleTableCell")
         //API Calling
-        self.checkConnectivity()
+        self.checkConnectivityHomeData()
     }
     //MARK: - Side Menu Setup
     func sideMenuSetup() {
@@ -99,7 +103,10 @@ class HomeVC: UIViewController {
     //MARK: - Button Actions
     // Menu Button Action
     @IBAction func menuButtonTapped(_ sender: UIButton) {
-        present((SideMenuManager.default.leftMenuNavigationController)!, animated: true, completion: nil)
+        let menuVC = SideMenuManager.default.leftMenuNavigationController?.viewControllers.first as! SideMenuVC
+        menuVC.serviceCategoryModel = self.serviceCategoryModel
+        menuVC.productCategoryModel = self.productCategoryModel
+        present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     // Cart Button Action
     @IBAction func cartButtonTapped(_ sender: UIButton) {
@@ -231,12 +238,39 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 }
 //MARK: - API Call
 extension HomeVC {
-    func checkConnectivity() {
+    //MARK: - Dashboard API
+    func checkConnectivityHomeData() {
         if Helper.checkInternetConnectivity() {
             viewModel.HomeDataFetchAPI(latitude:"",longitude: "",completion: { [self](result) in
                 self.homeModel = result
                 DispatchQueue.main.async {
                     self.homeTableView.reloadData()
+                    self.checkConnectivityServiceData()
+                }
+            })
+        } else {
+            Helper.showAlert(message: "Please check your Internet connection")
+        }
+    }
+    //MARK: - SideMenu Service Category API
+    func checkConnectivityServiceData(){
+        if Helper.checkInternetConnectivity() {
+            viewModel.ServiceDataFetchAPI(completion: { [self](result) in
+                self.serviceCategoryModel = result.data!
+                DispatchQueue.main.async {
+                    self.checkConnectivityProductData()
+                }
+            })
+        } else {
+            Helper.showAlert(message: "Please check your Internet connection")
+        }
+    }
+    //MARK: - SideMenu Product Category API
+    func checkConnectivityProductData(){
+        if Helper.checkInternetConnectivity() {
+            viewModel.ProductDataFetchAPI(completion: { [self](result) in
+                self.productCategoryModel = result.data!
+                DispatchQueue.main.async {
                 }
             })
         } else {
@@ -244,3 +278,5 @@ extension HomeVC {
         }
     }
 }
+
+

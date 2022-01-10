@@ -9,191 +9,208 @@ import UIKit
 
 class SideMenuVC: UIViewController {
 
+    var serviceCategoryModel = [ServiceCategoryData]()
+    
+    var productCategoryModel = [ProductCategoryData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
     }
-    
     //MARK: - Initial Setup
     func initialSetup() {
         // Set status bar color
         Helper.StatusBarColor(view: self.view)
     }
-
     //MARK: - Button Actions
-    
     // Close Button Action
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
-
 //MARK: - Side Menu Table View Logic
 extension SideMenuVC: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 23
+        return self.serviceCategoryModel.count +  self.productCategoryModel.count + 5
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        // SideMenuCategoryTableViewCell
-        if indexPath.row == 0 || indexPath.row == 8 {
+        if indexPath.row == 0 || indexPath.row == self.serviceCategoryModel.count + 3{
+            // SideMenuCategoryTableViewCell
             return 60.0
-        
-        // SideMenuSeparatorTableViewCell
-        } else if indexPath.row == 7 || indexPath.row == 22 {
+        }else if indexPath.row == self.serviceCategoryModel.count + 2{
+            // SideMenuSeparatorTableViewCell
             return 20.0
-        
-        // SideMenuCategoryItemTableViewCell
-        } else {
+        }else{
+            // SideMenuCategoryItemTableViewCell
             return 40.0
         }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // SideMenuCategoryTableViewCell
-        if indexPath.row == 0 {
+        if indexPath.row == 0 || indexPath.row == self.serviceCategoryModel.count + 3{
+            // SideMenuCategoryTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryTableViewCell") as! SideMenuCategoryTableViewCell
             cell.selectionStyle = .none
-            cell.lblCategoryName.text = "Services"
+            if indexPath.row == 0 {
+                cell.lblCategoryName.text = "Services"
+            }else{
+                cell.lblCategoryName.text = "Products"
+            }
             return cell
-        
-        // SideMenuCategoryItemTableViewCell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 6 {
+        }else if indexPath.row == self.serviceCategoryModel.count + 1 || indexPath.row == self.serviceCategoryModel.count + self.productCategoryModel.count + 4{
+            // SideMenuViewAllTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuViewAllCategoryTableViewCell") as! SideMenuViewAllCategoryTableViewCell
             cell.selectionStyle = .none
             return cell
-        
-        // SideMenuSeparatorTableViewCell
-        } else if indexPath.row == 7 {
+        }else if indexPath.row == self.serviceCategoryModel.count + 2{
+            // SideMenuSeparatorTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSeparatorTableViewCell") as! SideMenuSeparatorTableViewCell
             cell.selectionStyle = .none
             return cell
-        
-        // SideMenuCategoryTableViewCell
-        } else if indexPath.row == 8 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryTableViewCell") as! SideMenuCategoryTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryName.text = "Products"
-            return cell
-        
-        // SideMenuCategoryItemTableViewCell
-        } else if indexPath.row == 9 {
+        }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
             cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Food & Beverages"
-            return cell
-            
-        } else if indexPath.row == 10 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Mobile & Laptop"
-            return cell
-            
-        } else if indexPath.row == 11 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Bags and Shoes"
-            return cell
-            
-        } else if indexPath.row == 12 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Electronics"
-            return cell
-            
-        } else if indexPath.row == 13 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Fashion Accessories"
-            return cell
-            
-        } else if indexPath.row == 14 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Grocery"
-            return cell
-            
-        } else if indexPath.row == 15 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Health and Beauty"
-            return cell
-            
-        } else if indexPath.row == 16 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Home Appliances"
-            return cell
-            
-        } else if indexPath.row == 17 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Kids Clothing"
-            return cell
-            
-        } else if indexPath.row == 18 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Books & Stationary"
-            return cell
-            
-        } else if indexPath.row == 19 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Mens Clothing"
-            return cell
-            
-        } else if indexPath.row == 20 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
-            cell.selectionStyle = .none
-            cell.lblCategoryItem.text = "Womens Clothing"
-            return cell
-            
-        } else if indexPath.row == 21 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuViewAllCategoryTableViewCell") as! SideMenuViewAllCategoryTableViewCell
-            cell.selectionStyle = .none
-            return cell
-        
-        // SideMenuSeparatorTableViewCell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSeparatorTableViewCell") as! SideMenuSeparatorTableViewCell
-            cell.selectionStyle = .none
+            if indexPath.row > self.serviceCategoryModel.count + 3{
+                let value = self.serviceCategoryModel.count + 4
+                let currentModel = self.productCategoryModel[indexPath.row - value]
+                cell.lblCategoryItem.text = currentModel.name
+            }else{
+                let currentModel = self.serviceCategoryModel[indexPath.row - 1]
+                cell.lblCategoryItem.text = currentModel.name
+            }
             return cell
         }
+        
+        // SideMenuCategoryItemTableViewCell
+//        else if indexPath.row == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//        } else if indexPath.row == 2 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//        } else if indexPath.row == 3 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//
+//        } else if indexPath.row == 4 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//
+//        } else if indexPath.row == 5 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//
+//        } else if indexPath.row == 6 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuViewAllCategoryTableViewCell") as! SideMenuViewAllCategoryTableViewCell
+//            cell.selectionStyle = .none
+//            return cell
+//
+//        // SideMenuSeparatorTableViewCell
+//        } else if indexPath.row == 7 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSeparatorTableViewCell") as! SideMenuSeparatorTableViewCell
+//            cell.selectionStyle = .none
+//            return cell
+//
+//        // SideMenuCategoryTableViewCell
+//        } else if indexPath.row == 8 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryTableViewCell") as! SideMenuCategoryTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryName.text = "Products"
+//            return cell
+//
+//        // SideMenuCategoryItemTableViewCell
+//        } else if indexPath.row == 9 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Food & Beverages"
+//            return cell
+//
+//        } else if indexPath.row == 10 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Mobile & Laptop"
+//            return cell
+//
+//        } else if indexPath.row == 11 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Bags and Shoes"
+//            return cell
+//
+//        } else if indexPath.row == 12 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Electronics"
+//            return cell
+//
+//        } else if indexPath.row == 13 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Fashion Accessories"
+//            return cell
+//
+//        } else if indexPath.row == 14 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Grocery"
+//            return cell
+//
+//        } else if indexPath.row == 15 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Health and Beauty"
+//            return cell
+//
+//        } else if indexPath.row == 16 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Home Appliances"
+//            return cell
+//
+//        } else if indexPath.row == 17 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Kids Clothing"
+//            return cell
+//
+//        } else if indexPath.row == 18 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Books & Stationary"
+//            return cell
+//
+//        } else if indexPath.row == 19 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Mens Clothing"
+//            return cell
+//
+//        } else if indexPath.row == 20 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCategoryItemTableViewCell") as! SideMenuCategoryItemTableViewCell
+//            cell.selectionStyle = .none
+//            cell.lblCategoryItem.text = "Womens Clothing"
+//            return cell
+//
+//        } else if indexPath.row == 21 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuViewAllCategoryTableViewCell") as! SideMenuViewAllCategoryTableViewCell
+//            cell.selectionStyle = .none
+//            return cell
+//
+//        // SideMenuSeparatorTableViewCell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuSeparatorTableViewCell") as! SideMenuSeparatorTableViewCell
+//            cell.selectionStyle = .none
+//            return cell
+//        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

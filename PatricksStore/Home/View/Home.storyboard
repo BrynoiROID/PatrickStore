@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-368.11594202898556" y="98.641304347826093"/>
+            <point key="canvasLocation" x="-2700" y="823"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="Em7-Av-R03">
@@ -203,14 +203,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest shops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paE-Xq-GBM">
-                                                    <rect key="frame" x="20" y="30" width="126" height="24"/>
+                                                    <rect key="frame" x="20" y="18" width="126" height="24"/>
                                                     <fontDescription key="fontDescription" name="Barlow-Medium" family="Barlow" pointSize="20"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="paE-Xq-GBM" firstAttribute="top" secondItem="wgM-aI-P6J" secondAttribute="top" constant="30" id="OqL-2q-hab"/>
+                                                <constraint firstItem="paE-Xq-GBM" firstAttribute="centerY" secondItem="wgM-aI-P6J" secondAttribute="centerY" id="FpZ-C1-lDS"/>
                                                 <constraint firstItem="paE-Xq-GBM" firstAttribute="leading" secondItem="wgM-aI-P6J" secondAttribute="leading" constant="20" id="oZ1-Vs-gqJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -862,7 +862,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYd-iz-3R5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2107.2463768115945" y="84.782608695652186"/>
+            <point key="canvasLocation" x="-42" y="823"/>
         </scene>
     </scenes>
     <resources>
