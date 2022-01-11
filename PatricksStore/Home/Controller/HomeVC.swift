@@ -143,6 +143,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 case 0:
                     let strybd = UIStoryboard(name: "HomeCategories", bundle: nil)
                     let vc = strybd.instantiateViewController(withIdentifier: "AllCategoriesVC") as! AllCategoriesVC
+                        vc.productCategoryModel = self.productCategoryModel
                     self.navigationController?.pushViewController(vc, animated: true)
                 case 1:
                     let strybd = UIStoryboard(name: "HomeCategories", bundle: nil)
@@ -241,7 +242,7 @@ extension HomeVC {
     //MARK: - Dashboard API
     func checkConnectivityHomeData() {
         if Helper.checkInternetConnectivity() {
-            viewModel.HomeDataFetchAPI(latitude:"",longitude: "",completion: { [self](result) in
+            viewModel.HomeDataFetchAPI(completion: { [self](result) in
                 self.homeModel = result
                 DispatchQueue.main.async {
                     self.homeTableView.reloadData()

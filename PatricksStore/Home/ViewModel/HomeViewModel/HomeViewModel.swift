@@ -11,10 +11,9 @@ import Alamofire
 
 class HomeViewModel {
     //MARK: - Home API Call
-    public func HomeDataFetchAPI(latitude:String,longitude:String,completion: @escaping(HomeModel)-> Void){
-        let param = ["lat":"11","lng":"76"]
+    public func HomeDataFetchAPI(completion: @escaping(HomeModel)-> Void){
         let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
-        WebServices.sharedApiInstance.homeApi(strUrl: Helper.appBaseURL+"customer-accounts/dashboard", parameter:param, header: header) { (result) in
+        WebServices.sharedApiInstance.homeApi(strUrl: Helper.appBaseURL+"customer-accounts/dashboard",header: header) { (result) in
             switch result {
             case .success(let result) :
                 if result.statusCode == 200 {

@@ -36,7 +36,7 @@ class productCollectionCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         Helper.cornerSetImageView(image: self.productImageView, radiousValue: 5.0)
-        Helper.borderAndborderColourSetUIImageView(image: self.productImageView, borderWidth: 1.0, colour: .black)
+        Helper.borderAndborderColourSetUIImageView(image: self.productImageView, borderWidth: 2.0, colour: .black)
         Helper.cornerSetButton(button: self.productAddToCartButton, radiousValue: 5.0)
         Helper.shadoweSetButton(button: self.productAddToCartButton)
     }
