@@ -81,8 +81,10 @@ struct Products : Decodable {
     let color : String?
     let size : String?
     let actualPrice : Double?
-    let maxDiscount : Int?
-    let offerPrice : Int?
+    //let maxDiscount : Int?
+    let maxDiscount : Double?
+    //let offerPrice : Int?
+    let offerPrice : Double?
     let discountDateFrom : String?
     let discountDateTo : String?
     let category : String?
@@ -102,11 +104,12 @@ struct Products : Decodable {
     let __v : Int?
     let adminCommission : Int?
     let adminCommissionAmount : Double?
-    let costPrice : Int?
+    let costPrice : Double?
     let productId : Int?
     let shopAmount : Double?
     let shopDiscount : Int?
-    let franchiseCommissionAmount : Int?
+    let franchiseCommissionAmount : Double?
     let options : [String]?
     let id : String?
+    let type : String?
 }

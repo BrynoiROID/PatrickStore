@@ -11,6 +11,7 @@ import Cosmos
 
 import Kingfisher
 
+
 class productCollectionCell: UICollectionViewCell {
     //MARK: - IB Outlets
     @IBOutlet weak var productImageView: UIImageView!
@@ -57,16 +58,18 @@ class productCollectionCell: UICollectionViewCell {
     //MARK: - Setup Product View
     func productDataSetup(){
         if self.productsModel != nil{
-            if let url = URL(string: self.productsModel!.imgUrl![0].publicUrl!){
-                 let placeholder = UIImage(named: "placeholder")
-                 let options : KingfisherOptionsInfo = [KingfisherOptionsInfoItem.transition(.fade(0.1))]
-                self.productImageView.kf.indicatorType = .activity
-                self.productImageView.kf.setImage(with: url, placeholder: placeholder, options: options)
-             }
+            if self.productsModel!.imgUrl!.count > 0{
+                if let url = URL(string: self.productsModel!.imgUrl![0].publicUrl!){
+                     let placeholder = UIImage(named: "placeholder")
+                     let options : KingfisherOptionsInfo = [KingfisherOptionsInfoItem.transition(.fade(0.1))]
+                    self.productImageView.kf.indicatorType = .activity
+                    self.productImageView.kf.setImage(with: url, placeholder: placeholder, options: options)
+                 }
+            }
             self.productNameLabel.text = self.productsModel!.name
             self.productOldRateLabel.text = "₹" + String(self.productsModel!.offerPrice!)
             self.productActualRateLabel.text = "₹" + String(self.productsModel!.actualPrice!)
-            
         }
     }
 }
+

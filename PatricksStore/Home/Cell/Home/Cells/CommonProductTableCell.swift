@@ -6,7 +6,10 @@
 //
 
 import UIKit
-
+//MARK: - Delegate Creation
+protocol productCellselectDelegate {
+    func addToCartCompletionWith(product: Products)
+}
 class CommonProductTableCell: UITableViewCell {
     //MARK: - IB Outlets
     @IBOutlet weak var categoryCollectionView: UICollectionView!
@@ -19,9 +22,12 @@ class CommonProductTableCell: UITableViewCell {
     
     @IBOutlet weak var productBGView: UIView!
     
+    //MARK: - Variables and Constants
     var clvIndexValue : Int = 0
     
     var productCategoryModel = [ProductCategory]()
+    
+    var completionDelegate : productCellselectDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -94,7 +100,9 @@ extension CommonProductTableCell: UICollectionViewDelegate, UICollectionViewData
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCollectionCell", for: indexPath) as! productCollectionCell
-                cell.productsModel = self.productCategoryModel[0].products![indexPath.row]
+                cell.productAddToCartButton.tag = indexPath.row
+                cell.productAddToCartButton.addTarget(self, action: #selector(self.addToCartButtonTapped), for: .touchUpInside)
+                cell.productsModel = self.productCategoryModel[clvIndexValue].products![indexPath.row]
                 cell.awakeFromNib()
             return cell
         }
@@ -107,6 +115,19 @@ extension CommonProductTableCell: UICollectionViewDelegate, UICollectionViewData
             self.productCollectionView.reloadData()
         }else{
             
+        }
+    }
+}
+//MARK: - Button Tap
+extension CommonProductTableCell{
+    //MARK: - Add To Cart Button Tap
+    @objc func addToCartButtonTapped(sender : UIButton) {
+        let selectedBtn = sender
+        selectedBtn.isSelected = !selectedBtn.isSelected
+        let buttonPostion = selectedBtn.convert(selectedBtn.bounds.origin, to: productCollectionView)
+        if let indexPath = productCollectionView.indexPathForItem(at: buttonPostion) {
+            let currentModel = self.productCategoryModel[clvIndexValue].products![indexPath.row]
+            self.completionDelegate.addToCartCompletionWith(product: currentModel)
         }
     }
 }

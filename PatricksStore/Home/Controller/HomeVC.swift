@@ -230,6 +230,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CommonProductTableCell") as! CommonProductTableCell
                     cell.selectionStyle = .none
                     cell.productCategoryModel  = currentModel!.productCategory!
+                    cell.completionDelegate = self
                     cell.awakeFromNib()
                 return cell
             }
@@ -278,6 +279,22 @@ extension HomeVC {
             Helper.showAlert(message: "Please check your Internet connection")
         }
     }
+    //MARK: - Add To Cart Product API
+    func checkConnectivityAddTocartProduct(product: Products){
+        if Helper.checkInternetConnectivity() {
+            viewModel.ProductAddToCartAPI(product: product,completion: { [self](result) in
+                DispatchQueue.main.async {
+                }
+            })
+        } else {
+            Helper.showAlert(message: "Please check your Internet connection")
+        }
+    }
 }
-
+//MARK: - Delegate Handle
+extension HomeVC: productCellselectDelegate{
+    func addToCartCompletionWith(product: Products) {
+        self.checkConnectivityAddTocartProduct(product: product)
+    }
+}
 

@@ -64,4 +64,27 @@ class HomeViewModel {
             }
         }
     }
+    //MARK: - Add To Cart  API Call
+    public func ProductAddToCartAPI(product: Products,completion: @escaping(ProductCategoryModel)-> Void){
+        let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
+        var url = "customer-product/cart/add"
+        let urlsURL = URL(string: url)!
+        let queryItems = [URLQueryItem(name: "product", value: product.id),
+                          URLQueryItem(name: "quantity", value: "1")]
+        url = urlsURL.appending(queryItems)!
+        WebServices.sharedApiInstance.addToCartProductApi(strUrl: Helper.appBaseURL+url, header: header) { (result) in
+            switch result {
+            case .success(let result) :
+                if result.statusCode == 200 {
+                    completion(result)
+                }else {
+                    Helper.showAlert(message: result.msg!)
+                }
+            case .failure(let err) :
+                print("API Error", err)
+                Helper.showAlert(message: "Something went wrong")
+                break
+            }
+        }
+    }
 }

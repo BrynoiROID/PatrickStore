@@ -15,9 +15,7 @@ class Helper {
     static var appName : String = "PATRICKS STORE"
     static var appBaseURL: String = "http://34.93.247.52:8000/"
     static var FCMToken: String = ""
-    static var GoogleMapServiceAPIKey: String = "AIzaSyAi6sa9V5DqD2Z062Jq4Yv9rYUZ4-zvhdQ"
-    //"AIzaSyCbGSdoxzHuMIKmJ8IfbC-VWiHW0_US3Ng"
-    
+    static var GoogleMapServiceAPIKey: String = "AIzaSyAsmkQ2ai4T-lK-P2fzNNM5iKjcU3qdhqE"
     //MARK: - App Colors
     static var appThemeColor: String = "#DDAB3A"
     static var appStatusBarColor: String = "#C78735"

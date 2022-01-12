@@ -26,6 +26,8 @@ class AllCategoriesVC: UIViewController {
 
     var productCategoryModel = [ProductCategoryData]()
     
+    var currentCategoryModel : ProductCategoryData?
+    
     var indexSelected = 0
     
     var viewModel = AllCategoriesViewModel()
@@ -53,7 +55,8 @@ class AllCategoriesVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // Reload Table after row is selected
-        self.tableRowSelected()
+        self.currentCategoryModel = self.productCategoryModel[indexSelected]
+        self.selectedCategoryData()
     }
     //MARK: - Button Actions
     // Back Button Action
@@ -87,18 +90,15 @@ extension AllCategoriesVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexSelected = indexPath.row
-        tableRowSelected()
-    }
-    func tableRowSelected() {
+        self.indexSelected = indexPath.row
         self.tblAllCategories.reloadData()
-        self.tblAllCategories.scrollToRow(at: IndexPath(row: indexSelected, section: 0), at: .middle, animated: true)
+        self.tblAllCategories.scrollToRow(at: IndexPath(row: indexPath.row, section: 0), at: .middle, animated: true)
+        self.currentCategoryModel = self.productCategoryModel[indexPath.row]
         self.selectedCategoryData()
-        
     }
     //MARK: - Setting Data to Model
     func selectedCategoryData(){
-        self.selectedCategory = CategoryData(limit: <#T##String?#>, categoryId: <#T##String?#>, isPerishable: <#T##String?#>)
+        self.selectedCategory = CategoryData(limit: "10", categoryId: self.currentCategoryModel!._id, isPerishable: String(self.currentCategoryModel!.isPerishable!))
         //Api Calling
         self.checkConnectivityProductData()
     }
@@ -106,7 +106,6 @@ extension AllCategoriesVC: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Category Items Collection View Logic
 extension AllCategoriesVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return 9
         return self.productModel?.items?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,7 +151,7 @@ extension AllCategoriesVC {
     //MARK: - Product List API
     func checkConnectivityProductData() {
         if Helper.checkInternetConnectivity() {
-            viewModel.ProductDataFetchAPI(completion: { [self](result) in
+            viewModel.ProductDataFetchAPI(catModel: self.selectedCategory!,completion: { [self](result) in
                 self.productModel = result
                 DispatchQueue.main.async {
                     self.colVwAllCategories.reloadData()
