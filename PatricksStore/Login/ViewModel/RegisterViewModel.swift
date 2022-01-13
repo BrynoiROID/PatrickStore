@@ -9,7 +9,7 @@ import Foundation
 
 class RegisterViewModel {
     
-    // Register Validation
+    //MARK: - Register Validation
     func isRegisterValid(firstname: String,lastname: String,emailid: String,mobilenumber: String, password: String,cnfrmpassword: String,checkboxselected:Bool) -> Bool {
         
         if firstname == "" {
@@ -43,7 +43,7 @@ class RegisterViewModel {
         return false
     }
     
-    //MARK:- Register API Call
+    //MARK: - Register API Call
     public func RegisterAPI(firstname:String,lastname:String,email:String,mobile:String,password:String,completion: @escaping((RegisterData))-> Void){
         let param = ["firstName":firstname,"lastName":lastname,"email":email,"mobile":mobile,"password":password]
         WebServices.sharedApiInstance.registerApi(url: Helper.appBaseURL+"customer-accounts/register", parameter: param) { (result) in

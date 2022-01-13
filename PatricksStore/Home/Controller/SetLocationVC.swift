@@ -63,6 +63,8 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     
     var locationSelect = LocationSelect.Home
     
+    var viewModel = SetLocationViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
@@ -193,7 +195,7 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     }
     
     
-    //MARK:- Marker Drag Delegate Methods
+    //MARK: - Marker Drag Delegate Methods
     
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         
@@ -219,9 +221,7 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     @IBAction func setLocationButtonTapped(_ sender: UIButton) {
         switch locationSelect {
         case .Home:
-            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-            let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.checkConnectivityHomeData()
         case .Address:
             self.locationDelelgate.locationSelection(location: self.subThorough + " " + self.city + "," + " " + self.locationname + "," + " " + self.zip + "," + " " + self.country, lat: latitude, long: longitude)
             self.navigationController?.popViewController(animated: true)
@@ -246,4 +246,21 @@ extension SetLocationVC{
      func wasCancelled(_ viewController: GMSAutocompleteViewController) {
        dismiss(animated: true, completion: nil)
      }
+}
+//MARK: - API Calls
+extension SetLocationVC{
+    //MARK: - Location API
+    func checkConnectivityHomeData() {
+        if Helper.checkInternetConnectivity() {
+            viewModel.setLocationAPI(completion: { [self](result) in
+                DispatchQueue.main.async {
+                    let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+                    let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            })
+        } else {
+            Helper.showAlert(message: "Please check your Internet connection")
+        }
+    }
 }

@@ -76,7 +76,7 @@ class HomeViewModel {
             switch result {
             case .success(let result) :
                 if result.statusCode == 200 {
-                    completion(result)
+                    //completion()
                 }else {
                     Helper.showAlert(message: result.msg!)
                 }
