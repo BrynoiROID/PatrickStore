@@ -18,10 +18,7 @@ import MapKit
 protocol SetLocationButtonTapDelegate {
     func locationSelection(location:String,lat:String,long:String)
 }
-
 class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate, GMSAutocompleteViewControllerDelegate{
-    
-    
     //MARK: - IB Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -65,20 +62,18 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     
     var viewModel = SetLocationViewModel()
     
+    var param : LocationSetParams?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
     }
-    
     //MARK: - Initial Setup
     func initialSetup() {
-        
         // Set status bar color
         Helper.StatusBarColor(view: self.view)
-        
         // Setting up of Map
         self.setupMap()
-        
         // Search Bar Settings
         if #available(iOS 13.0, *) {
             self.searchBar.delegate = self
@@ -95,12 +90,10 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
             self.searchBar.clearBackgroundColor()
         }
     }
-    
     // MARK: - UISearch Bar Delegate Function
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.autocompleteClicked()
     }
-    
     // MARK: - Google Places Autocomplete
     func autocompleteClicked() {
         let autocompleteController = GMSAutocompleteViewController()
@@ -118,7 +111,6 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         autocompleteController.modalPresentationStyle = .fullScreen
         present(autocompleteController, animated: true, completion: nil)
     }
-    
     //MARK: - Current Location Update Delegate
     func setupMap(){
         mapView.delegate = self
@@ -127,7 +119,6 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
             manager.stopUpdatingLocation()
@@ -143,27 +134,21 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
             userLocationMarker.map = mapView
             self.latitude = String(location.coordinate.latitude)
             self.longitude = String(location.coordinate.longitude)
-            
             CATransaction.begin()
             CATransaction.setAnimationDuration(2.0)
             userLocationMarker.position = location.coordinate // CLLocationCoordinate2D coordinate
             CATransaction.commit()
             render(location)
-            
         }
     }
-    
     func render(_ location: CLLocation){
-        
         geocoder.reverseGeocodeLocation(location) { (placemark, error) -> Void in
             if error != nil {
                 print("THERE WAS AN ERROR")
             }
             else{
                 if let place = placemark?[0]{
-                    
                     if placemark!.count > 0 {
-                        
                         if let locationName = place.name {
                             self.locationname = String(locationName)
                         }
@@ -193,12 +178,8 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
             }
         }
     }
-    
-    
     //MARK: - Marker Drag Delegate Methods
-    
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
-        
         print(marker.position)
         let Location = marker.position
         latitude = String(Location.latitude)
@@ -207,27 +188,28 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         self.render(CurrentLocation)
     }
     func mapView(_ mapView: GMSMapView, didBeginDragging marker: GMSMarker) {
-        
         print("didBeginDragging")
     }
     func mapView(_ mapView: GMSMapView, didDrag marker: GMSMarker) {
-        
         print("didDrag")
     }
-    
     //MARK: - Button Actions
-    
     //MARK: - Set Location Button Action
     @IBAction func setLocationButtonTapped(_ sender: UIButton) {
         switch locationSelect {
         case .Home:
-            self.checkConnectivityHomeData()
+            self.setToParamModel()
+            self.checkConnectivitySetLocation()
         case .Address:
             self.locationDelelgate.locationSelection(location: self.subThorough + " " + self.city + "," + " " + self.locationname + "," + " " + self.zip + "," + " " + self.country, lat: latitude, long: longitude)
             self.navigationController?.popViewController(animated: true)
         case .FetchlLocation:
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    //MARK: - Param Setup
+    func setToParamModel(){
+        self.param = LocationSetParams(deviceId: "abcdef", location: LocationParams(lat: self.latitude, lng: self.longitude))
     }
 }
 //MARK: - GMSLocation Setup
@@ -241,7 +223,6 @@ extension SetLocationVC{
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error: ", error.localizedDescription)
     }
-    
     // User canceled the operation.
      func wasCancelled(_ viewController: GMSAutocompleteViewController) {
        dismiss(animated: true, completion: nil)
@@ -250,9 +231,9 @@ extension SetLocationVC{
 //MARK: - API Calls
 extension SetLocationVC{
     //MARK: - Location API
-    func checkConnectivityHomeData() {
+    func checkConnectivitySetLocation() {
         if Helper.checkInternetConnectivity() {
-            viewModel.setLocationAPI(completion: { [self](result) in
+            viewModel.setLocationAPI(param: self.param!,completion: { [self](result) in
                 DispatchQueue.main.async {
                     let storyBoard = UIStoryboard(name: "Home", bundle: nil)
                     let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC

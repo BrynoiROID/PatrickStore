@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		463D4F47DC409EA60DC091D8 /* Pods_PatricksStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A794EF3E1D39FC9962D01C4D /* Pods_PatricksStore.framework */; };
+		71F0824C367A7950C7A88B5B /* Pods_PatricksStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D4016DAB5B16EFF4416826 /* Pods_PatricksStore.framework */; };
 		8400104326EF941300988E82 /* FestivalOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400103326EF941300988E82 /* FestivalOffersVC.swift */; };
 		8400104426EF941300988E82 /* AllCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400103426EF941300988E82 /* AllCategoriesVC.swift */; };
 		8400104526EF941300988E82 /* SlideShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400103726EF941300988E82 /* SlideShowCell.swift */; };
@@ -190,7 +190,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		183E1C351EF45CA31B537131 /* Pods-PatricksStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatricksStore.debug.xcconfig"; path = "Target Support Files/Pods-PatricksStore/Pods-PatricksStore.debug.xcconfig"; sourceTree = "<group>"; };
+		72D4016DAB5B16EFF4416826 /* Pods_PatricksStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PatricksStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8400103326EF941300988E82 /* FestivalOffersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FestivalOffersVC.swift; sourceTree = "<group>"; };
 		8400103426EF941300988E82 /* AllCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesVC.swift; sourceTree = "<group>"; };
 		8400103726EF941300988E82 /* SlideShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideShowCell.swift; sourceTree = "<group>"; };
@@ -336,6 +336,7 @@
 		84FAB21C271029DB0008D50A /* ServiceDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceDetails.storyboard; sourceTree = "<group>"; };
 		84FAB21E27102A850008D50A /* ServiceDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsVC.swift; sourceTree = "<group>"; };
 		84FAD9D2273BD57000583314 /* RelatedProductsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProductsTitleCell.swift; sourceTree = "<group>"; };
+		8E9EE6447082C38905BCC547 /* Pods-PatricksStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatricksStore.debug.xcconfig"; path = "Target Support Files/Pods-PatricksStore/Pods-PatricksStore.debug.xcconfig"; sourceTree = "<group>"; };
 		A6010C2A277D87DF00903EC3 /* Colour.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colour.xcassets; sourceTree = "<group>"; };
 		A6010C2C277D8FA400903EC3 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A6010C32277D97CD00903EC3 /* bannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bannerTableCell.swift; sourceTree = "<group>"; };
@@ -363,8 +364,7 @@
 		A65719F92782BD7500EC634A /* TittleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TittleTableCell.xib; sourceTree = "<group>"; };
 		A6888F1E278FE5C800F7DEFE /* SetLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewModel.swift; sourceTree = "<group>"; };
 		A6888F22278FF9E200F7DEFE /* SetLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationModel.swift; sourceTree = "<group>"; };
-		A794EF3E1D39FC9962D01C4D /* Pods_PatricksStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PatricksStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D39120BC7DD3883C8E2A4911 /* Pods-PatricksStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatricksStore.release.xcconfig"; path = "Target Support Files/Pods-PatricksStore/Pods-PatricksStore.release.xcconfig"; sourceTree = "<group>"; };
+		D30C6D0257F9BBC810C691C6 /* Pods-PatricksStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatricksStore.release.xcconfig"; path = "Target Support Files/Pods-PatricksStore/Pods-PatricksStore.release.xcconfig"; sourceTree = "<group>"; };
 		FAE2378127886A780037C674 /* AddAddressViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewMode.swift; sourceTree = "<group>"; };
 		FAE2378427886A9D0037C674 /* MyAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewModel.swift; sourceTree = "<group>"; };
 		FAE2378A27886ADF0037C674 /* AddAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressModel.swift; sourceTree = "<group>"; };
@@ -381,17 +381,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				463D4F47DC409EA60DC091D8 /* Pods_PatricksStore.framework in Frameworks */,
+				71F0824C367A7950C7A88B5B /* Pods_PatricksStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07BC48498EA90658F0E1A420 /* Frameworks */ = {
+		54EFDF52F9D8F5FFD39BFFEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A794EF3E1D39FC9962D01C4D /* Pods_PatricksStore.framework */,
+				72D4016DAB5B16EFF4416826 /* Pods_PatricksStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -455,7 +455,7 @@
 				841D300626CBC17D00797F7D /* PatricksStore */,
 				841D300526CBC17D00797F7D /* Products */,
 				8873758391317D71BD042D0D /* Pods */,
-				07BC48498EA90658F0E1A420 /* Frameworks */,
+				54EFDF52F9D8F5FFD39BFFEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1454,8 +1454,8 @@
 		8873758391317D71BD042D0D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				183E1C351EF45CA31B537131 /* Pods-PatricksStore.debug.xcconfig */,
-				D39120BC7DD3883C8E2A4911 /* Pods-PatricksStore.release.xcconfig */,
+				8E9EE6447082C38905BCC547 /* Pods-PatricksStore.debug.xcconfig */,
+				D30C6D0257F9BBC810C691C6 /* Pods-PatricksStore.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1657,18 +1657,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 841D301826CBC18000797F7D /* Build configuration list for PBXNativeTarget "PatricksStore" */;
 			buildPhases = (
-				DAA4BD1C7286AC65F7EEE175 /* [CP] Check Pods Manifest.lock */,
+				02149687A0365A2688DF1403 /* [CP] Check Pods Manifest.lock */,
 				841D300026CBC17D00797F7D /* Sources */,
 				841D300126CBC17D00797F7D /* Frameworks */,
 				841D300226CBC17D00797F7D /* Resources */,
-				9A90E2FFE93B8020D6783C32 /* [CP] Embed Pods Frameworks */,
-				552F6730F11EF6C0D06803C1 /* [CP] Copy Pods Resources */,
+				207FCC7FA2A37CFA1E7138ED /* [CP] Embed Pods Frameworks */,
+				1644A8054C163A76A5B4F34A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PatricksStore;
+			packageProductDependencies = (
+			);
 			productName = PatricksStore;
 			productReference = 841D300426CBC17D00797F7D /* PatricksStore.app */;
 			productType = "com.apple.product-type.application";
@@ -1696,6 +1698,8 @@
 				Base,
 			);
 			mainGroup = 841D2FFB26CBC17D00797F7D;
+			packageReferences = (
+			);
 			productRefGroup = 841D300526CBC17D00797F7D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1748,41 +1752,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		552F6730F11EF6C0D06803C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A90E2FFE93B8020D6783C32 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DAA4BD1C7286AC65F7EEE175 /* [CP] Check Pods Manifest.lock */ = {
+		02149687A0365A2688DF1403 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1802,6 +1772,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1644A8054C163A76A5B4F34A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		207FCC7FA2A37CFA1E7138ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PatricksStore/Pods-PatricksStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2102,14 +2106,15 @@
 		};
 		841D301926CBC18000797F7D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 183E1C351EF45CA31B537131 /* Pods-PatricksStore.debug.xcconfig */;
+			baseConfigurationReference = 8E9EE6447082C38905BCC547 /* Pods-PatricksStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SBPJDXG7CY;
+				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = PatricksStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
@@ -2117,9 +2122,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iroidtechnologies.PatricksStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = PatricksStore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2127,14 +2133,15 @@
 		};
 		841D301A26CBC18000797F7D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D39120BC7DD3883C8E2A4911 /* Pods-PatricksStore.release.xcconfig */;
+			baseConfigurationReference = D30C6D0257F9BBC810C691C6 /* Pods-PatricksStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SBPJDXG7CY;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = PatricksStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2143,7 +2150,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iroidtechnologies.PatricksStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = PatricksStore;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
