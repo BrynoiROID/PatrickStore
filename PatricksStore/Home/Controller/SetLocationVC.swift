@@ -18,7 +18,7 @@ import MapKit
 protocol SetLocationButtonTapDelegate {
     func locationSelection(location:String,lat:String,long:String)
 }
-class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate, GMSAutocompleteViewControllerDelegate{
+class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate{
     //MARK: - IB Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -99,8 +99,12 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         // Specify the place data types to return.
+//        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+//                                                    UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
+        
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                                                    UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
+                                                 UInt(GMSPlaceField.formattedAddress.rawValue)  |
+                                                  UInt(GMSPlaceField.addressComponents.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
         autocompleteController.placeFields = fields
         // Specify a filter.
         let filter = GMSAutocompleteFilter()
@@ -178,6 +182,25 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
             }
         }
     }
+    //MARK: - Map Setup
+    func mapSetupMarker(lat: Double,long: Double){
+        self.mapView.clear()
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 30.0)
+        mapView.camera = camera
+        mapView.animate(to: camera)
+        mapView.animate(toZoom: 14.0)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.compassButton = true
+        mapView.settings.myLocationButton = true
+        mapView.settings.consumesGesturesInView = true
+        userLocationMarker.isDraggable = true
+        userLocationMarker.map = mapView
+        self.latitude = String(lat)
+        self.longitude = String(long)
+        userLocationMarker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let center = CLLocation(latitude: lat, longitude: long)
+        render(center)
+    }
     //MARK: - Marker Drag Delegate Methods
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         print(marker.position)
@@ -213,10 +236,24 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
     }
 }
 //MARK: - GMSLocation Setup
-extension SetLocationVC{
+extension SetLocationVC:GMSAutocompleteViewControllerDelegate{
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        lblPlaceName.text = place.name
+       // lblPlaceName.text = place.name
+       // dismiss(animated: true, completion: nil)
+        // Show HouseAndFlat
+        if place.name?.description != nil {
+            self.locationname = place.name?.description ?? ""
+        }
+        // Show latitude
+        if place.coordinate.latitude.description.count != 0 {
+            self.latitude = String(place.coordinate.latitude)
+        }
+        // Show longitude
+        if place.coordinate.longitude.description.count != 0 {
+            self.longitude = String(place.coordinate.longitude)
+        }
+        self.mapSetupMarker(lat: place.coordinate.latitude, long: place.coordinate.longitude)
         dismiss(animated: true, completion: nil)
     }
     // Handle the error.
