@@ -1,0 +1,16 @@
+//
+//  Production.xcconfig
+//  PatricksStore
+//
+//  Created by Faheem Hussain on 04/03/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_DISPLAY_NAME = PatricksStore
+PRODUCT_BUNDLE_IDENTIFIER = com.client.PatricksStore
+
+API_SERVICE_ROOT = http:/$()/34.93.247.52:8000/
+API_SERVICE_PRODUCT_FOLDER = customer-product/
+API_SERVICE_ACCOUNT_FOLDER = customer-accounts/

@@ -47,10 +47,11 @@ class LoginViewModel {
         return false
     }
     
-    //MARK:- Login API Call
+    //MARK: - Login API Call
     public func LoginAPI(email:String,password:String,completion: @escaping()-> Void){
-        let param = ["email":email,"password":password]
-        WebServices.sharedApiInstance.otpApi(url: Helper.appBaseURL+"customer-accounts/login", parameter: param) { (result) in
+        let params = LoginParams(userName: email, password: password)
+        //let param = ["userName":email,"password":password]
+        WebServices.sharedApiInstance.otpApi(url: Helper.appBaseURL+"customer-accounts/login", parameter: params) { (result) in
             switch result {
             
             case .success(let result) :
@@ -70,4 +71,8 @@ class LoginViewModel {
         }
     }
     
+}
+struct LoginParams: Encodable {
+    let userName: String
+    let password: String
 }
