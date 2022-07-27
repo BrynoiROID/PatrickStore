@@ -222,7 +222,7 @@ class SetLocationVC: UIViewController, GMSMapViewDelegate, CLLocationManagerDele
         switch locationSelect {
         case .Home:
             self.setToParamModel()
-            self.checkConnectivitySetLocation()
+            self.setLocation()
         case .Address:
             self.locationDelelgate.locationSelection(location: self.subThorough + " " + self.city + "," + " " + self.locationname + "," + " " + self.zip + "," + " " + self.country, lat: latitude, long: longitude)
             self.navigationController?.popViewController(animated: true)
@@ -265,20 +265,31 @@ extension SetLocationVC:GMSAutocompleteViewControllerDelegate{
        dismiss(animated: true, completion: nil)
      }
 }
-//MARK: - API Calls
-extension SetLocationVC{
-    //MARK: - Location API
-    func checkConnectivitySetLocation() {
-        if Helper.checkInternetConnectivity() {
-            viewModel.setLocationAPI(param: self.param!,completion: { [self](result) in
-                DispatchQueue.main.async {
+//MARK: - View Model Observer
+extension SetLocationVC {
+    func observeViewModel() {
+        viewModel.itemsDidChange = { _ in
+            if UserManager().isLogined {
+                DispatchQueue.main.async {[weak self] in
                     let storyBoard = UIStoryboard(name: "Home", bundle: nil)
                     let controller = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self?.navigationController?.pushViewController(controller, animated: true)
                 }
-            })
-        } else {
-            Helper.showAlert(message: "Please check your Internet connection")
+            }
+        }
+        viewModel.presentAlert = { alert in
+            Helper.showAlert(message: alert)
         }
     }
 }
+//MARK: - API Calls
+extension SetLocationVC{
+    //MARK: - Location API
+    func setLocation(){
+        LoadingIndicatorView.show()
+        viewModel.setLocationAPI(param: self.param!) {
+            LoadingIndicatorView.hide()
+        }
+    }
+}
+

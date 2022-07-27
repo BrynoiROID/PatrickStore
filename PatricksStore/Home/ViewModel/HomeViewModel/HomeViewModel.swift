@@ -12,7 +12,8 @@ import Alamofire
 class HomeViewModel {
     //MARK: - Home API Call
     public func HomeDataFetchAPI(completion: @escaping(HomeModel)-> Void){
-        let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
+        //let header : HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
+        let header : HTTPHeaders = ["Authorization" : UserManager.getLoginedUser()?.jwtToken ?? "" ]
         WebServices.sharedApiInstance.homeApi(strUrl: Helper.appBaseURL+"customer-accounts/dashboard",header: header) { (result) in
             switch result {
             case .success(let result) :

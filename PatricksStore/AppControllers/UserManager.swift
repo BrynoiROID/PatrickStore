@@ -15,7 +15,7 @@ struct UserManager {
     var user: OtpData? = UserManager.getLoginedUser()
     var isLogined = getLoginedUser() != nil
     
-    static private func getLoginedUser() -> OtpData? {
+    static func getLoginedUser() -> OtpData? {
         let defaults = UserDefaults.standard
         if let savedPerson = defaults.object(forKey: LOGINED_USER) as? Data {
             let decoder = JSONDecoder()

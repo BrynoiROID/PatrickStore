@@ -10,22 +10,29 @@ import Foundation
 import Alamofire
 
 class SetLocationViewModel {
+    
+    var itemsDidChange: ((Any?) -> Void)?
+    
+    var errorOccured: ((SystemError) -> Void)?
+    
+    var presentAlert: ((String) -> Void)?
+    
     //MARK: - Location Set API Call
-    public func setLocationAPI(param: LocationSetParams,completion: @escaping(LocationUpdateModel)-> Void){
-        let header: HTTPHeaders = ["Authorization": Helper.getLoggedinUser()!.jwtToken!]
-        let param : Parameters = ["deviceId": param.deviceId,"location": ["lat":param.location.lat,"lng":param.location.lng]] as [String : Any]
-        WebServices.sharedApiInstance.setLocationApi(strUrl: Helper.appBaseURL+"customer-accounts/location/set", header: header, params: param) { (result) in
-            switch result {
-                case .success(let result) :
-                    if result.statusCode == 200 {
-                        completion(result)
-                    }else {
-                        Helper.showAlert(message: result.msg!)
-                    }
-                case .failure(let err) :
-                    Helper.showAlert(message: err.localizedDescription)
-                    break
+
+    func setLocationAPI(param: LocationSetParams, completion: @escaping () -> ()) {
+
+        let param = LocationSetParams(deviceId: param.deviceId, location: LocationParams(lat: param.location.lat, lng: param.location.lng) )
+        
+            Repository.RequestingHelper.post(endPoint: Repository.Endpoints.SETLOCATION, parameter: param,apipointer: .ACCOUNT, responseCallBackOf: String.self) { result in
+                DispatchQueue.main.async {
+                    self.itemsDidChange?(result)
+                    completion()
+                }
+            } failure: { error in
+                DispatchQueue.main.async {
+                    self.presentAlert?(error.message)
+                    completion()
+                }
             }
-        }
     }
 }

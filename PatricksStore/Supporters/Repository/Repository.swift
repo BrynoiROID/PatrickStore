@@ -14,14 +14,6 @@ struct Repository {
             return NetworkReachabilityManager()?.isReachable ?? false
         }
     }
-    
-//    func appendHeaderParams(to params: Parameters?) -> Parameters {
-//        var params = params ?? Parameters()
-//        params[HeaderParams.securityKey.rawValue] =  "Admin@@$!"
-//        params[HeaderParams.securityPassword.rawValue] = "VM@AZA!VM@AZA!"
-//        return params
-//    }
-    
     func appendHeader() -> Any?{
         var header =  HTTPHeaders()
 
@@ -44,10 +36,8 @@ struct Repository {
         }else if apipointer == .PRODUCT{
              url = Repository.URLMaker.apiProductURLStringFrom(endpoint: endPoint)
         }
-        //let headers = RepositoryManager.header(url: URL(string: url), httpMethod: method.rawValue)
-        //let params = appendHeaderParams(to: params)
         let headers = appendHeader()
-        
+        url = "http://34.93.247.52:8000/customer-accounts/login"
         Log.debugPrint("url = \(String(describing: url)) || param = \(String(describing: params)) || Header = \(String(describing: headers))")
         AF.request(url,
                    method: method,

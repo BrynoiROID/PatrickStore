@@ -6,10 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 class LoginViewModel {
     
-    // Login Validation
+    var itemsDidChange: ((Any?) -> Void)?
+    
+    var errorOccured: ((SystemError) -> Void)?
+    
+    var presentAlert: ((String) -> Void)?
+    
+    //MARK: - Login Validation
+    
     func isLoginValid(username: String, password: String) -> Bool {
         
         if username == "" {
@@ -37,7 +45,8 @@ class LoginViewModel {
         return false
     }
     
-    // Mobile Number Validation
+    //MARK: -  Mobile Number Validation
+    
     func isMobileNumberValid(mobileNumber: String) -> Bool {
         if mobileNumber.count != 10 {
             Helper.showAlert(message: "Please enter a valid mobile number.")
@@ -48,26 +57,30 @@ class LoginViewModel {
     }
     
     //MARK: - Login API Call
-    public func LoginAPI(email:String,password:String,completion: @escaping()-> Void){
-        let params = LoginParams(userName: email, password: password)
-        //let param = ["userName":email,"password":password]
-        WebServices.sharedApiInstance.otpApi(url: Helper.appBaseURL+"customer-accounts/login", parameter: params) { (result) in
-            switch result {
+
+    func validateAndLogin(tfEmail: UITextField, tfPassword: UITextField, completion: @escaping () -> ()) {
+        do {
             
-            case .success(let result) :
-                if result.statusCode == 200 {
-                    Helper.clearUserDefaults()
-                    Helper.setLoggedinUser(loggedUser: result.data!)
+            let email = try tfEmail.validatedText(validationType: .requiredField(field: "Email"))
+            let password = try tfPassword.validatedText(validationType: .password)
+
+            let params = LoginParams(userName: email, password: password)
+            
+            Repository.RequestingHelper.post(endPoint: Repository.Endpoints.LOGIN, parameter: params,apipointer: .ACCOUNT, responseCallBackOf: OtpData.self) { result in
+                DispatchQueue.main.async {
+                    UserManager.saveLogined(user: result)
+                    self.itemsDidChange?(result)
                     completion()
-                } else {
-                    Helper.showAlert(message: result.msg!)
                 }
-                
-            case .failure(let err) :
-                print("API Error", err)
-                Helper.showAlert(message: "Something went wrong")
-                break
+            } failure: { error in
+                DispatchQueue.main.async {
+                    self.presentAlert?(error.message)
+                    completion()
+                }
             }
+        } catch {
+            presentAlert?((error as! SystemError).message)
+            completion()
         }
     }
     

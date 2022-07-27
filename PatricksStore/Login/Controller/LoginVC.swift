@@ -29,13 +29,14 @@ class LoginVC: UIViewController {
     func initialSetup() {
         Helper.StatusBarColor(view: self.view)
         passwordTextField.enablePasswordToggle()
+        observeViewModel()
     }
     
     //MARK: - Button Actions
     
     // Login Button Action
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        self.checkConnectivity()
+        self.loginAPI()
     }
     
     // Recover Password Button Action
@@ -64,24 +65,29 @@ class LoginVC: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
-
-//MARK: - API Call
+//MARK: - View Model Observer
 extension LoginVC {
-    func checkConnectivity() {
-        if Helper.checkInternetConnectivity() {
-            if viewModel.isLoginValid(username: self.emailTextField.text!, password: self.passwordTextField.text!) {
-                viewModel.LoginAPI(email: self.emailTextField.text!, password: self.passwordTextField.text!) {
-                    DispatchQueue.main.async {
-                        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-                        let controller = storyBoard.instantiateViewController(withIdentifier: "SetLocationVC") as! SetLocationVC
-                        self.navigationController?.pushViewController(controller, animated: true)
-                        
-                    }
+    func observeViewModel() {
+        viewModel.itemsDidChange = { _ in
+            if UserManager().isLogined {
+                DispatchQueue.main.async {[weak self] in
+                    let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+                    let controller = storyBoard.instantiateViewController(withIdentifier: "SetLocationVC") as! SetLocationVC
+                    self?.navigationController?.pushViewController(controller, animated: true)
                 }
-            } else {
-                Helper.showAlert(message: "Please check your Internet connection")
             }
         }
+        viewModel.presentAlert = { alert in
+            Helper.showAlert(message: alert)
+        }
     }
-    
+}
+//MARK: - API Call
+extension LoginVC {
+    func loginAPI(){
+        LoadingIndicatorView.show()
+        viewModel.validateAndLogin(tfEmail: emailTextField, tfPassword: passwordTextField) {
+            LoadingIndicatorView.hide()
+        }
+    }
 }
