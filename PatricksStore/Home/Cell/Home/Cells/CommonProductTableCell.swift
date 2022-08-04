@@ -94,7 +94,11 @@ extension CommonProductTableCell: UICollectionViewDelegate, UICollectionViewData
                     cell.categoryLabel.textColor = .black
                 }else{
                     cell.categorySelectedView.backgroundColor = .clear
-                    cell.categoryLabel.textColor = UIColor(named: "UnSelectColour")
+                    if #available(iOS 11.0, *) {
+                        cell.categoryLabel.textColor = UIColor(named: "UnSelectColour")
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 cell.awakeFromNib()
             return cell

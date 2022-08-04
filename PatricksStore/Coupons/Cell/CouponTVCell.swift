@@ -32,12 +32,20 @@ class CouponTVCell: UITableViewCell {
         
         // To make left view rounded
         vwLeftCoupon.clipsToBounds = false
-        vwLeftCoupon.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        if #available(iOS 11.0, *) {
+            vwLeftCoupon.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
         vwLeftCoupon.layer.cornerRadius = 10
         
         // To make right view rounded
         vwRightCoupon.clipsToBounds = false
-        vwRightCoupon.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        if #available(iOS 11.0, *) {
+            vwRightCoupon.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
         vwRightCoupon.layer.cornerRadius = 10
         
         // Discount Label

@@ -275,7 +275,11 @@ extension UIView {
     // Makes the top corners of the view rounded
     func makeTopCornersRounded() {
         self.layer.cornerRadius = 40
-        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
