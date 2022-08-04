@@ -9,7 +9,7 @@ import Foundation
 
 extension Repository {
     struct Endpoints {
-        static let LOGIN = "login"
+        static let LOGIN = "customer-accounts/login"
         static let SETLOCATION = "location/set"
     }
 }

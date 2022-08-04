@@ -2287,6 +2287,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E9EE6447082C38905BCC547 /* Pods-PatricksStore.debug.xcconfig */;
 			buildSettings = {
+				API_SERVICE_ROOT = "http://34.93.247.52:8000/";
+				APP_DISPLAY_NAME = "Patricks Store";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2314,6 +2316,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D30C6D0257F9BBC810C691C6 /* Pods-PatricksStore.release.xcconfig */;
 			buildSettings = {
+				API_SERVICE_ROOT = "http://34.93.247.52:8000/";
+				APP_DISPLAY_NAME = "Patricks Store";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";

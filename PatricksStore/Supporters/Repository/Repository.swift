@@ -37,7 +37,6 @@ struct Repository {
              url = Repository.URLMaker.apiProductURLStringFrom(endpoint: endPoint)
         }
         let headers = appendHeader()
-        url = "http://34.93.247.52:8000/customer-accounts/login"
         Log.debugPrint("url = \(String(describing: url)) || param = \(String(describing: params)) || Header = \(String(describing: headers))")
         AF.request(url,
                    method: method,
